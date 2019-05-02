@@ -26,13 +26,25 @@ with open(os.path.join(sys.path[0], 'data', 'lyrics.data_raw'), encoding='utf-8'
     data = data.replace('\n\n\n\n\n', '\n\n')
     data = data.replace('\n\n\n\n', '\n\n')
     data = data.replace('\n\n\n', '\n\n')
-    # data = data.replace('\n\n', '\n---\n')
+    data = data.replace('\n\n', '\n---\n')
+    
     lines = data.split('\n')
+    
+    data = ""
+
     for i in range(len(lines)):
         stripped_line = lines[i].strip()
         if len(stripped_line) > 0:
-            formatted_data += '{}\n'.format(stripped_line)
+            if stripped_line == '---':
+                data += '\n'
+            else:
+                data += '{} '.format(stripped_line)
 
+    lines = data.split('\n')
+
+    for i in range(len(lines)):
+        if len(lines[i].split(' ')) > 5:
+            formatted_data += '{}\n'.format(lines[i])
 
 with open(os.path.join(sys.path[0], 'data', 'lyrics.data_processed'), 'w', encoding='utf-8') as file:
     file.write(formatted_data)
