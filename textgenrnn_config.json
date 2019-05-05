@@ -1,1 +1,1 @@
-{"word_level": true, "max_words": 10000, "rnn_size": 128, "max_length": 20, "rnn_bidirectional": true, "name": "textgenrnn", "dim_embeddings": 100, "max_gen_length": 50, "single_text": false, "rnn_layers": 7}
+{"dim_embeddings": 100, "word_level": false, "max_length": 50, "max_words": 10000, "rnn_bidirectional": true, "max_gen_length": 100, "rnn_size": 128, "rnn_layers": 3, "name": "textgenrnn", "single_text": false}

@@ -36,15 +36,15 @@ with open(os.path.join(sys.path[0], 'data', 'lyrics.data_raw'), encoding='utf-8'
         stripped_line = lines[i].strip()
         if len(stripped_line) > 0:
             if stripped_line == '---':
-                data += '\n'
+                data += ''
             else:
-                data += '{} '.format(stripped_line)
+                data += '{}\n'.format(stripped_line)
 
     lines = data.split('\n')
 
     for i in range(len(lines)):
-        if len(lines[i].split(' ')) > 5:
-            formatted_data += '{}\n'.format(lines[i])
+        #if len(lines[i].split(' ')) > 5:
+        formatted_data += '{}\n'.format(lines[i])
 
 with open(os.path.join(sys.path[0], 'data', 'lyrics.data_processed'), 'w', encoding='utf-8') as file:
     file.write(formatted_data)
