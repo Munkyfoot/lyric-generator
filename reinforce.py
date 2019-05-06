@@ -1,5 +1,6 @@
 from textgenrnn import textgenrnn
-from datetime import datetime
 
-textgen = textgenrnn()
-textgen.train_from_file('data/lyrics.data_processed', num_epochs=25)
+textgen = textgenrnn(weights_path='textgenrnn_weights.hdf5',
+                        vocab_path='textgenrnn_vocab.json',
+                        config_path='textgenrnn_config.json')
+textgen.train_from_file('data/lyrics.data_processed', num_epochs=1)

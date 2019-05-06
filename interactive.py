@@ -1,5 +1,4 @@
 from textgenrnn import textgenrnn
-from datetime import datetime
 
 try:
     textgen = textgenrnn(weights_path='textgenrnn_weights.hdf5',
