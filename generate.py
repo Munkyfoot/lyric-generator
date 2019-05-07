@@ -1,20 +1,19 @@
+import os
+import sys
 from textgenrnn import textgenrnn
-from datetime import datetime
 
 try:
     textgen = textgenrnn(weights_path='textgenrnn_weights.hdf5',
                         vocab_path='textgenrnn_vocab.json',
                         config_path='textgenrnn_config.json')
 
-    time_of_completion = datetime.now().isoformat(sep='_')
+    textgen.generate_to_file(
+        os.path.join(sys.path[0], 'generation', 'T100'), n=10, temperature=[1.0])
 
     textgen.generate_to_file(
-        'generation/{}_T=1.0'.format(time_of_completion), n=10, temperature=[1.0])
+        os.path.join(sys.path[0], 'generation', 'T50'), n=10, temperature=[0.5])
 
     textgen.generate_to_file(
-        'generation/{}_T=0.5'.format(time_of_completion), n=10, temperature=[0.5])
-
-    textgen.generate_to_file(
-        'generation/{}_T=0.2'.format(time_of_completion), n=10, temperature=[0.2])
-except:
-    print("Generation failed. Have you run 'train.py' yet?")
+        os.path.join(sys.path[0], 'generation', 'T20'), n=10, temperature=[0.2])
+except Exception as e:
+    print("Generation failed with exception {}".format(e))
